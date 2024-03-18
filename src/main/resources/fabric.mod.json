@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "lunaui",
+  "version": "${version}",
+  "name": "LunaUI",
+  "description": "Make your UI Fancy!",
+  "authors": [
+    "Lunatic"
+  ],
+  "license": "MIT",
+  "icon": "assets/lunaui/icon.png",
+  "environment": "*",
+  "mixins": [
+    "lunaui.mixins.json"
+  ],
+  "depends": {
+    "fabric-api": "*"
+  },
+  "accessWidener": "lunaui.accesswidener"
+}
