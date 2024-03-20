@@ -9,6 +9,7 @@
   },
   "client": [
     "MixinEntryListWidget",
+    "MixinGameOptions",
     "MixinMinecraftClient",
     "MixinPressableWidget",
     "MixinScreen",
