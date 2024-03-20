@@ -1,7 +1,5 @@
 # A Fancy menu mod, because there aren't enough already.
 
-<h2>This Mod makes your Menus Fancy. That's all.</h2>
-
 <h2>How to configure:</h2>
 
 <h3>Color-Theme</h3>
