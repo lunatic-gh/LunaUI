@@ -23,6 +23,12 @@ public abstract class MixinEntryListWidget {
     @Final
     protected MinecraftClient client;
 
+    @Shadow public abstract void setRenderBackground(boolean renderBackground);
+
+    @Shadow protected abstract void setRenderHeader(boolean renderHeader, int headerHeight);
+
+    @Shadow private boolean renderHeader;
+    @Shadow private boolean renderBackground;
     @Unique
     private double smoothScrollAmount = this.getScrollAmount();
 
@@ -32,6 +38,7 @@ public abstract class MixinEntryListWidget {
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(MinecraftClient client, int width, int height, int y, int itemHeight, CallbackInfo ci) {
         this.smoothScrollAmount = this.getScrollAmount();
+        this.renderBackground = false;
     }
 
     @Inject(method = "renderWidget", at = @At("HEAD"))
@@ -52,13 +59,13 @@ public abstract class MixinEntryListWidget {
         }
     }
 
-    @Inject(method = "drawMenuListBackground", at = @At("HEAD"), cancellable = true)
-    public void disableBackground(DrawContext context, CallbackInfo ci) {
-        ci.cancel();
-    }
+    //@Inject(method = "drawMenuListBackground", at = @At("HEAD"), cancellable = true)
+    //public void disableBackground(DrawContext context, CallbackInfo ci) {
+    //    ci.cancel();
+    //}
 
-    @Inject(method = "drawHeaderAndFooterSeparators", at = @At("HEAD"), cancellable = true)
-    public void disableSeparators(DrawContext context, CallbackInfo ci) {
-        ci.cancel();
-    }
+    //@Inject(method = "drawHeaderAndFooterSeparators", at = @At("HEAD"), cancellable = true)
+    //public void disableSeparators(DrawContext context, CallbackInfo ci) {
+    //    ci.cancel();
+    //}
 }

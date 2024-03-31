@@ -11,6 +11,7 @@
     "MixinEntryListWidget",
     "MixinGameOptions",
     "MixinMinecraftClient",
+    "MixinPackScreen",
     "MixinPressableWidget",
     "MixinScreen",
     "MixinSliderWidget",

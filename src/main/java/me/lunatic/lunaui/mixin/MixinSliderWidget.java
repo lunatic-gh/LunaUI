@@ -9,6 +9,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
@@ -31,6 +32,11 @@ public abstract class MixinSliderWidget extends ClickableWidget {
     public void renderWidget$drawProgress(DrawContext context, Identifier texture, int x, int y, int width, int height) {
         int themeColor = MinecraftClient.getInstance().options.getMonochromeLogo().getValue() ? 0 : 220;
         int alpha = this.active ? this.isSelected() ? 170 : 140 : 210;
-        context.fill(this.getX() + 2, this.getY() + 2, (this.getX() + 2) + (int) ((this.width - 4) * this.value), this.getY() + this.getHeight() - 2, Color.of(themeColor, themeColor, themeColor, alpha));
+        context.fill(this.getX() + 2, this.getY() + 2, (this.getX() + 2) + (int) ((this.width - 4) * this.validate(this.value)), this.getY() + this.getHeight() - 2, Color.of(themeColor, themeColor, themeColor, alpha));
+    }
+
+    @Unique
+    private double validate(double value) {
+        return value < 0.0D ? 0.0D : value > 1.0D ? 1.0D : value;
     }
 }
